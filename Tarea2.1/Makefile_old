@@ -1,0 +1,19 @@
+all: programa
+
+programa: FactoryofNumbers.o Mundo.o Robot.o Manufactura.o
+	gcc -g -o programa FactoryofNumbers.o Mundo.o Robot.o Manufactura.o
+
+FactoryofNumbers.o: FactoryofNumbers.c Mundo.h Robot.h Manufactura.h Io.h
+	gcc -c FactoryofNumbers.c
+
+Mundo.o: Mundo.c Mundo.h Manufactura.h Robot.h Io.h
+	gcc -c Mundo.c
+
+Robot.o: Robot.c Manufactura.h Mundo.h Robot.h Io.h
+	gcc -c Robot.c
+
+Manufactura.o: Manufactura.c Mundo.h Manufactura.h Robot.h Io.h
+	gcc -c Manufactura.c
+
+clean:
+	rm -f programa *.o
